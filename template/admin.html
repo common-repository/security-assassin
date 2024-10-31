@@ -1,0 +1,32 @@
+<h2 class="nav-tab-wrapper">
+    <?php foreach ($tabs as $tab): ?>
+    <a href="<?=$tab['url']?>" class="nav-tab <?php if($activetab == $tab['get']): ?>nab-tab-active<?php endif;?>"><?=$tab['label']?></a>
+    <?php endforeach; ?></h2>
+<p><form method=POST>
+    <fieldset class="options">
+        <?php if($activetab == 'files'): ?>
+            <p><?=$t1?>
+            <br><input type="checkbox" name="r1" value="001" <?=$n_content?> >wp-content
+            <br><input type="checkbox" name="r2" value="002" <?=$n_includes?> >wp-includes
+            <br><input type="checkbox" name="r3" value="003" <?=$n_admin?> >wp-admin
+            <p><?=$t2?>
+                <br><textarea cols="50" rows="5" name="userrules"><?=$userrules?></textarea>
+                <h5><?=$t3?>
+                <br><?=$t4?></h5>
+            <p><?=$t5?>
+                <br><textarea cols="50" rows="5" name="exceptions"><?=$exceptions?></textarea>
+                <h5><?=$t13 ?></h5>
+            <p><?=$t6?><input size="40" type="text" name="link" value="<?=$link?>">
+            <p><?=$t14?><input type="checkbox" name="xmlrpc" value="1" <?=$xmlrpc?> >
+        <?php elseif($activetab == 'user'): ?>
+            <p><input type="checkbox" name="hide" value="1" <?=$hideguest?>><?=$t7?><?=$textnovalid?>
+            <p><?=$t8?>
+                <br><input size="5" type="text" name="min_user_level" value="<?=$min_user_level?>">
+                <h5><?=$t9?></h5>
+                <p><?=$t10?><input size="40" type="text" name="block_user_link" value="<?=$block_user_link?>">
+        <?php elseif($activetab == 'bonus'): ?>
+            <p><input type="checkbox" name="newear" value="1" <?=$newear?>><?=$t11?>
+        <?php endif; ?>
+        <p><input type="submit" value="<?=$t12?>" name="apply">
+    </fieldset>
+</form>
